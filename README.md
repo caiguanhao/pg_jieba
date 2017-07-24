@@ -1,3 +1,20 @@
+USAGE
+=====
+
+```
+cd pg_jieba
+docker build -t jieba .
+docker run --rm -v="$PWD:/host" jieba cp /jieba.tar.gz /host
+docker run -it --rm -v="$PWD:/host" postgres:9.5.6 bash
+tar -P -xvzf /host/jiebar.tar.gz
+pg_createcluster 9.5 main
+pg_ctlcluster 9.5 main start
+su postgres -c psql
+create extension pg_jieba;
+```
+
+----------
+
 # pg_jieba
 [![Lang](https://img.shields.io/badge/Language-C%2FC%2B%2B-green.svg)]()
 [![BSD](https://img.shields.io/badge/License-BSD-green.svg)]()
